@@ -1,0 +1,32 @@
+
+<%= form_for(@employee) do |f| %>
+
+    <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :posicion %>
+        <%= f.text_field :posicion %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :num_empleado %>
+        <%= f.text_field :num_empleado %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :private_num %>
+        <%= f.text_field :private_num %>
+    </div>
+
+    <%= f.submit "Guardar" %>
+
+
+<% end %>
