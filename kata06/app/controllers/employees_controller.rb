@@ -9,7 +9,6 @@ class EmployeesController < ApplicationController
     end
 
     def create
-        
         Employee.create(employee_params)
 
         redirect_to employees_path
@@ -26,10 +25,12 @@ class EmployeesController < ApplicationController
         redirect_to employees_path
     end
 
+    private
     def set_employee
         @employee = Employee.find(params[:id])
     end
 
+    private
     def employee_params
         data = params.require(:employee).permit(:name, :email, :posicion, :num_empleado, :private_num)
     end
