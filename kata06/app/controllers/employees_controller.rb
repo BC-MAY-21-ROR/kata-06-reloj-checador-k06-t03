@@ -1,32 +1,42 @@
 class EmployeesController < ApplicationController
+
     def index
         @employees = Employee.all
     end
+
     def new
         @employee = Employee.new
     end
 
     def create
-        data = params.require(:employee).permit(:name, :email, :posicion, :num_empleado, :private_num)
-        Employee.create(data)
+        Employee.create(employee_params)
 
         redirect_to employees_path
     end
 
     def edit
-        @employee = Employee.find(params[:id])
+        set_employee
     end
 
     def update
-        @employee = Employee.find(params[:id])
-        data = params.require(:employee).permit(:name, :email, :posicion, :num_empleado, :private_num)
-        @employee.update(data)
+        set_employee
+        @employee.update(employee_params)
 
         redirect_to employees_path
     end
 
-    def destroy
+    private
+    def set_employee
         @employee = Employee.find(params[:id])
+    end
+
+    private
+    def employee_params
+        data = params.require(:employee).permit(:name, :email, :posicion, :num_empleado, :private_num)
+    end
+
+    def destroy
+        set_employee
         @employee.destroy
 
         redirect_to employees_path

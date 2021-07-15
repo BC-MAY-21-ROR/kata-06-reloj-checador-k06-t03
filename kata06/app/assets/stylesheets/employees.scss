@@ -1,15 +1,15 @@
 .wrapper{
     align-items: center;
-    background: rgb(217, 233, 216);
-    display: flex;
-    height: 100vh;
+    //background: rgb(217, 233, 216);
+    // display: flex;
+    height: 100%;
     justify-content: center;
     width: 100%;
 }
 
 .main-content{
     border-radius: 15px;
-    max-width: 400px;
+    // max-width: 400px;
 }
 
 .card-header{
@@ -25,4 +25,8 @@
 
 .form-row{
     padding-top: 15px;
+}
+
+.col-lg-12{
+    height: 100px;
 }
