@@ -1,0 +1,12 @@
+<div class="container">
+<p><%= I18n.l(Date.today, format: '%A, %d  %B  %Y') %><p>
+<h1 class="hour"><%= Time.now.strftime("%H:%M") %></h1>
+  <div class="col-sm-6 centered">
+      <input type="email" class="form-control"  id="staticEmail" placeholder="Add your private Number">
+      <div class="flex-btn">
+      <button type="button" class="btn succes-btn">Check In</button> <button type="button" class="btn danger-btn">Check out</button>
+      </div>
+  </div>
+
+
+</div>
