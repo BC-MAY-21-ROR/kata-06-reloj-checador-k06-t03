@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Posicion</th>
+      <th>Num empleado</th>
+      <th>Private num</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |e| %>
+      <tr>
+        <td><%= e.name %></td>
+        <td><%= e.email %></td>
+        <td><%= e.posicion %></td>
+        <td><%= e.num_empleado %></td>
+        <td><%= e.private_num %></td>
+        <td><%= link_to 'Editar', edit_employee_path(e) %></td>
+        <td><%= link_to 'Destroy', e, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
