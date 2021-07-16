@@ -1,0 +1,28 @@
+
+<%= form_for(@report) do |f| %>
+
+    <div class="form-row">
+        <div class="form-group mb-6">
+        <%= f.label :type, class: "form-label"%>
+        <%= f.text_field :type, class: "form-control" %>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group mb-6">
+        <%= f.label :date, class: "form-label" %>
+        <%= f.text_field :date, class: "form-control"  %>
+        </div>
+    </div>
+
+    <div class="form-row text-left">
+        <div class="form-group mb-6">
+        <%= f.label :description, class: "form-label" %>
+        <%= f.text_field :description, class: "form-control"  %>
+        </div>
+    </div>
+
+    <div class="buttonSubmit">
+        <%= f.submit "Create Report", class:"btn btn-primary" %>
+    </div>
+<% end %>

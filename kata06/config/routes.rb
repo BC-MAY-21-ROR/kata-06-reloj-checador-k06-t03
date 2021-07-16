@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :employees
   get 'login', to: 'employees#login'
   resources :companies
+  resources :reports
 end
