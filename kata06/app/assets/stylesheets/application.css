@@ -48,3 +48,8 @@
 .hour {
   font-size: 4.5rem;
 }
+
+.select_types{
+  padding: 4px;
+  border-radius: 3px;
+}
