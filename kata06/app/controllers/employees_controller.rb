@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+    before_action :validate_url, only: [:new, :edit, :index]
 
     def index
         @employees = Employee.all

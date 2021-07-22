@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-
+  before_action :validate_url, only: [:new, :edit, :index]
   def index
     @report = Report.all
   end
@@ -9,8 +9,7 @@ class ReportsController < ApplicationController
   end
 
   def create
-    Report.create(report_params)
-
+    current_user.reports.create(report_params)
     redirect_to reports_path
   end
 
@@ -21,7 +20,6 @@ class ReportsController < ApplicationController
   def update
     set_report
     @report.update(report_params)
-
     redirect_to reports_path
   end
 
