@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+    before_action :validate_url, only: [:new, :edit, :index]
 
     def index
         @companies = Company.all
