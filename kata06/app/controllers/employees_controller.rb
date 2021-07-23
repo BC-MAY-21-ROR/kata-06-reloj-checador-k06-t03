@@ -43,4 +43,7 @@ class EmployeesController < ApplicationController
         redirect_to employees_path
     end
 
+    def login
+    end
+
 end
