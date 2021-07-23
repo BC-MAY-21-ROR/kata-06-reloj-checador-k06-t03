@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   resources :companies
   resources :admins
   resources :administrators
+  resources :dashboard
 
 end
