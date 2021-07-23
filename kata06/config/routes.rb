@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
   post 'login', to: 'sessions#create'
 
-
-
+  resources :reports
   resources :companies
+  resources :admins
   resources :administrators
+
 end

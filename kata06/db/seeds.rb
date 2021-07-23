@@ -3,5 +3,9 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+pw = BCrypt::Password.create('prueba')
+admin = Administrator.new(username: "test1", password_digest: pw)
+admin.save
+
+admin2 = Administrator.new(username: "test2", password_digest: pw)
+admin2.save
