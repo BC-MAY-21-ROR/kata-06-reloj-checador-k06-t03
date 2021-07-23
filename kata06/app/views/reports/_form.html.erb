@@ -1,0 +1,32 @@
+
+<%= form_for(@report) do |f| %>
+    
+    <div class="form-row">
+        <div class="form-group mb-6">
+            <%report_types = {'Attendance by day'=>'Attendance by day',
+                            'Average time employees checked in/out by month'=>'Average time employees checked in/out by month',
+                            'Absence report by month'=>'Absence report by month'}%>
+            <%= f.label :report_type, class: "form-label" %>
+            <% list = report_types.sort%>
+            <%= f.select :report_type, list, selected: "Attendance by day", class:"select_types"%>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group mb-6">
+        <%= f.label :date, class: "form-label" %>
+        <%= f.text_field :date, class: "form-control"%>
+        </div>
+    </div>
+
+    <div class="form-row text-left">
+        <div class="form-group mb-6">
+        <%= f.label :description, class: "form-label" %>
+        <%= f.text_field :description, class: "form-control"  %>
+        </div>
+    </div>
+
+    <div class="buttonSubmit">
+        <%= f.submit "Create Report", class:"btn btn-primary" %>
+    </div>
+<% end %>

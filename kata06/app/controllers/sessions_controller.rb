@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
         @administrator = Administrator.find_by username:params[:username]
         if @administrator && @administrator.authenticate(params[:password])
             session[:administrator_id] = @administrator.id
-
+            
             return redirect_to employees_path
         end
 

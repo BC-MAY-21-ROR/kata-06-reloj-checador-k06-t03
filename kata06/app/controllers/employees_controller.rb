@@ -22,7 +22,12 @@ class EmployeesController < ApplicationController
     def update
         set_employee
         @employee.update(employee_params)
+        redirect_to employees_path
+    end
 
+    def destroy
+        set_employee
+        @employee.destroy
         redirect_to employees_path
     end
 
@@ -31,16 +36,9 @@ class EmployeesController < ApplicationController
         @employee = Employee.find(params[:id])
     end
 
-    private
+    
     def employee_params
         data = params.require(:employee).permit(:name, :email, :posicion, :num_empleado, :private_num)
-    end
-
-    def destroy
-        set_employee
-        @employee.destroy
-
-        redirect_to employees_path
     end
 
 end
