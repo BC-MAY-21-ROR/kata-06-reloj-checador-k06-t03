@@ -49,7 +49,11 @@
   font-size: 4.5rem;
 }
 
-.select_types{
+.select_types {
   padding: 4px;
   border-radius: 3px;
+}
+#notice1 {
+  background-color: #73de77 !important;
+  border-radius: 10px;
 }
