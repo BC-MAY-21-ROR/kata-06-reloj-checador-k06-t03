@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ReportsController < ApplicationController
-  before_action :validate_url, only: [:new, :edit, :index]
+  before_action :validate_url, only: %i[new edit index]
   def index
     @report = Report.all
   end
@@ -30,13 +32,12 @@ class ReportsController < ApplicationController
   end
 
   private
-    def set_report
-        @report = Report.find(params[:id])
-    end
 
-    
-    def report_params
-        data = params.require(:report).permit(:report_type, :date, :description)
-    end
+  def set_report
+    @report = Report.find(params[:id])
+  end
 
+  def report_params
+    data = params.require(:report).permit(:report_type, :date, :description)
+  end
 end

@@ -1,46 +1,47 @@
+# frozen_string_literal: true
+
 class CompaniesController < ApplicationController
-    before_action :validate_url, only: [:new, :edit, :index]
+  before_action :validate_url, only: %i[new edit index]
 
-    def index
-        @companies = Company.all
-    end
+  def index
+    @companies = Company.all
+  end
 
-    def new
-        @company = Company.new
-    end
+  def new
+    @company = Company.new
+  end
 
-    def create
-        Company.create(company_params)
+  def create
+    Company.create(company_params)
 
-        redirect_to companies_path
-    end
+    redirect_to companies_path
+  end
 
-    def edit
-        set_company
-    end
+  def edit
+    set_company
+  end
 
-    def update
-        set_company
-        @company.update(company_params)
+  def update
+    set_company
+    @company.update(company_params)
 
-        redirect_to companies_path
-    end
+    redirect_to companies_path
+  end
 
-    private
-    def set_company
-        @company = Company.find(params[:id])
-    end
+  private
 
-    private
-    def company_params
-        data = params.require(:company).permit(:name, :address)
-    end
+  def set_company
+    @company = Company.find(params[:id])
+  end
 
-    def destroy
-        set_company
-        @company.destroy
+  def company_params
+    data = params.require(:company).permit(:name, :address)
+  end
 
-        redirect_to companies_path
-    end
+  def destroy
+    set_company
+    @company.destroy
 
+    redirect_to companies_path
+  end
 end
