@@ -75,8 +75,5 @@ class EmployeesController < ApplicationController
     def login
         @employee = Employee.new
     end
-
     
-
-
 end
