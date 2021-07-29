@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_22_215254) do
+ActiveRecord::Schema.define(version: 2021_07_29_183913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +33,20 @@ ActiveRecord::Schema.define(version: 2021_07_22_215254) do
   create_table "employees", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.boolean "is_active"
     t.string "posicion"
     t.integer "num_empleado"
     t.integer "private_num"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "log_times", force: :cascade do |t|
+    t.string "logtype"
+    t.datetime "logdate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "employee_id", null: false
+    t.index ["employee_id"], name: "index_log_times_on_employee_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -51,5 +59,6 @@ ActiveRecord::Schema.define(version: 2021_07_22_215254) do
     t.index ["administrator_id"], name: "index_reports_on_administrator_id"
   end
 
+  add_foreign_key "log_times", "employees"
   add_foreign_key "reports", "administrators"
 end
