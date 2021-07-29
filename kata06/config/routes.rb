@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   resources :companies
   resources :admins
   resources :administrators
+
+  root 'sessions#new'
 end
