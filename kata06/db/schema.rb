@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_183913) do
   create_table "employees", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.boolean "is_active"
     t.string "posicion"
     t.integer "num_empleado"
     t.integer "private_num"
