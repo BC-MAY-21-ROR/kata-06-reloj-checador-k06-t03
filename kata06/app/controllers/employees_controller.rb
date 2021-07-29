@@ -45,7 +45,7 @@ class EmployeesController < ApplicationController
     @employee = Employee.find_by private_num: number
     if @employee
       redirect_to loginE_path,
-                  notice: 'Welcome back ' << @employee.name << ' Check in succesfully on ' << Time.now.strftime('%H:%M') << I18n.l(
+      flash.alert = 'Welcome back ' << @employee.name << ' Check in succesfully on ' << Time.now.strftime('%H:%M') << I18n.l(
                     Date.today, format: ' %A, %d  %B  %Y'
                   )
     elsif flash.alert = 'User not found.'
@@ -60,7 +60,7 @@ class EmployeesController < ApplicationController
     @employee = Employee.find_by private_num: number
     if @employee
       redirect_to loginE_path,
-                  notice: 'See you soon ' << @employee.name << ' Check out succesfully on ' << Time.now.strftime('%H:%M') << I18n.l(
+      flash.alert = 'See you soon ' << @employee.name << ' Check out succesfully on ' << Time.now.strftime('%H:%M') << I18n.l(
                     Date.today, format: ' %A, %d  %B  %Y'
                   )
     elsif flash.alert = 'User not found.'
