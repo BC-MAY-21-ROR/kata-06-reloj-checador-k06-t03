@@ -60,9 +60,7 @@ class EmployeesController < ApplicationController
     @employee = Employee.find_by private_num: number
     if @employee
       redirect_to loginE_path,
-      flash.alert = 'See you soon ' << @employee.name << ' Check out succesfully on ' << Time.now.strftime('%H:%M') << I18n.l(
-                    Date.today, format: ' %A, %d  %B  %Y'
-                  )
+      flash.alert = "See you soon " << @employee.name << "Check out succesfully on " << Time.now.strftime('%H:%M') << I18n.l(Date.today, format: ' %A, %d  %B  %Y')
     elsif flash.alert = 'User not found.'
 
       redirect_to loginE_path
