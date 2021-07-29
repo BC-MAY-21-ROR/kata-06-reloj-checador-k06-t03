@@ -12,8 +12,8 @@
       <tr>
         <td><%= company.name %></td>
         <td><%= company.address %></td>
-        <td><%= link_to 'Editar', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_company_path(company), class:"btn btn-secondary" %></td>
+        <td><%= link_to 'Deactivate', company, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-warning" %></td>
       </tr>
     <% end %>
   </tbody>
