@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
   before_action :validate_url, only: %i[new edit index]
 
   def index
-    @companies = Company.all
+    @companies = Company.where(is_active: true)
   end
 
   def new
@@ -12,8 +12,9 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    Company.create(company_params)
-
+    company = Company.create(company_params)
+    company.is_active = true
+    company.save
     redirect_to companies_path
   end
 
@@ -28,19 +29,20 @@ class CompaniesController < ApplicationController
     redirect_to companies_path
   end
 
-  private
-
   def set_company
     @company = Company.find(params[:id])
   end
 
   def company_params
-    data = params.require(:company).permit(:name, :address)
+    data = params.require(:company).permit(:name, :address, :is_active)
   end
 
   def destroy
     set_company
-    @company.destroy
+    if @company.is_active
+      @company.update(is_active: false)
+      flash[:notice] = "Company #{@company.name} disabled succesfully."
+    end
 
     redirect_to companies_path
   end

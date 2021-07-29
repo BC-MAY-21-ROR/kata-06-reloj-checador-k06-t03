@@ -18,10 +18,9 @@
         <td><%= e.posicion %></td>
         <td><%= e.num_empleado %></td>
         <td><%= e.private_num %></td>
-        <td><%= link_to 'Editar', edit_employee_path(e) %></td>
-        <td><%= link_to 'Destroy', e, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_employee_path(e), class:"btn btn-secondary" %></td>
+        <td><%= link_to 'Deactivate', e, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-warning" %></td>
       </tr>
     <% end %>
-    <td><%= link_to 'New Employee', new_employee_path %></td>
   </tbody>
 </table>

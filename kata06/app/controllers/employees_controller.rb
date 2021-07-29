@@ -5,7 +5,7 @@ class EmployeesController < ApplicationController
   add_flash_types :info, :error, :warning
 
   def index
-    @employees = Employee.all
+    @employees = Employee.where(is_active: true)
   end
 
   def new
@@ -13,8 +13,9 @@ class EmployeesController < ApplicationController
   end
 
   def create
-    Employee.create(employee_params)
-
+    employee = Employee.create(employee_params)
+    employee.is_active = true
+    employee.save
     redirect_to employees_path
   end
 
@@ -30,7 +31,11 @@ class EmployeesController < ApplicationController
 
   def destroy
     set_employee
-    @employee.destroy
+    if @employee.is_active 
+        @employee.update(is_active: false)
+        flash[:notice] = "Employee #{@employee.name} disabled succesfully."
+    end
+
     redirect_to employees_path
   end
 
@@ -71,7 +76,7 @@ class EmployeesController < ApplicationController
   end
 
   def employee_params
-    data = params.require(:employee).permit(:name, :email, :posicion, :num_empleado, :private_num)
+    data = params.require(:employee).permit(:name, :email, :is_active, :posicion, :num_empleado, :private_num)
   end
 
   def login
