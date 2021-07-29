@@ -1,20 +1,24 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div id=table>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th colspan="2">Options</th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @companies.each do |company| %>
+    <tbody>
+      <% @companies.each do |company| %>
       <tr>
         <td><%= company.name %></td>
         <td><%= company.address %></td>
         <td><%= link_to 'Edit', edit_company_path(company), class:"btn btn-secondary" %></td>
-        <td><%= link_to 'Deactivate', company, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-warning" %></td>
+        <td>
+          <%= link_to 'Deactivate', company, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-warning" %>
+        </td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
+</div>

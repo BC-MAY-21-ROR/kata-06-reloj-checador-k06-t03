@@ -69,8 +69,6 @@ class EmployeesController < ApplicationController
         end
   end
 
-  private
-
   def set_employee
     @employee = Employee.find(params[:id])
   end
@@ -81,5 +79,6 @@ class EmployeesController < ApplicationController
 
   def login
     @employee = Employee.new
+    render layout: 'admin'
   end
 end
