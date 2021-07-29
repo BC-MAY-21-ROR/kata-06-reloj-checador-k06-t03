@@ -44,10 +44,10 @@ class EmployeesController < ApplicationController
     puts number
     @employee = Employee.find_by private_num: number
     if @employee
+      logs = LogTime.create({logtype:'checkin',logdate:Time.now.strftime("%d-%m-%Y %H:%M")	,employee_id:@employee.id})
+      puts @employee.id
       redirect_to loginE_path,
-                  notice: 'Welcome back ' << @employee.name << ' Check in succesfully on ' << Time.now.strftime('%H:%M') << I18n.l(
-                    Date.today, format: ' %A, %d  %B  %Y'
-                  )
+       notice: 'Welcome back ' + @employee.name + ' Check in succesfully on ' + Time.now.strftime('%H:%M') + I18n.l(Date.today, format: ' %A, %d  %B  %Y')
     elsif flash.alert = 'User not found.'
 
       redirect_to loginE_path
@@ -56,17 +56,17 @@ class EmployeesController < ApplicationController
 
   def logout
     number = params[:private_num].to_i
-    puts number
-    @employee = Employee.find_by private_num: number
-    if @employee
-      redirect_to loginE_path,
-                  notice: 'See you soon ' << @employee.name << ' Check out succesfully on ' << Time.now.strftime('%H:%M') << I18n.l(
-                    Date.today, format: ' %A, %d  %B  %Y'
-                  )
-    elsif flash.alert = 'User not found.'
-
-      redirect_to loginE_path
-    end
+        puts number
+        @employee = Employee.find_by private_num: number
+        if @employee  
+            logs = LogTime.create({logtype:'checkout',logdate:Time.now.strftime("%d-%m-%Y %H:%M")	,employee_id:@employee.id})
+            redirect_to loginE_path,
+                notice: 'See you soon ' + @employee.name + ' Check out succesfully on ' + Time.now.strftime("%H:%M")  + I18n.l(Date.today, format: ' %A, %d  %B  %Y') 
+        elsif
+            
+            flash.alert = "User not found."
+            redirect_to loginE_path
+        end
   end
 
   private
